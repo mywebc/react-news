@@ -9,7 +9,7 @@ export default class PCHeader extends React.Component {
     state = {
         current: '1',
     }
-    // react组件里面并没有手动绑定this,以下写法是一种解决方案，不需要绑定箭头函数
+    // react组件里面并没有手动绑定this,以下写法是一种解决方案
     handleClick = (e) => {
         this.setState({
           current: e.key,
