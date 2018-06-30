@@ -9,7 +9,7 @@ export default class PCHeader extends React.Component {
     state = {
         current: '1',
     }
-    // react组件里面并没有手动绑定this,以下写法是一种解决方案
+    // react组件里面并没有手动绑定this,以下写法是一种解决方案.
     handleClick = (e) => {
         this.setState({
           current: e.key,
@@ -30,6 +30,7 @@ export default class PCHeader extends React.Component {
                         <Menu 
                         mode="horizontal"
                         selectedKeys={[this.state.current]}
+                        onClick={this.handleClick}
                         >
                             <Menu.Item key="1">
                                 <Icon type="mail" />头条
