@@ -30,7 +30,7 @@ export default class PCHeader extends React.Component {
                         <Menu 
                         mode="horizontal"
                         selectedKeys={[this.state.current]}
-                        onClick={this.handleClick}
+                        onClick={this.handleClick} 
                         >
                             <Menu.Item key="1">
                                 <Icon type="mail" />头条

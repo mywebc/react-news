@@ -1,0 +1,20 @@
+@import '~antd/dist/antd.css';
+
+html {
+    font-size: 50px;
+}
+#mobile_header {
+    display: flex;
+    flex: 1;
+}
+#mobile_heade header {
+    border-bottom: 1px solid #eee;
+}
+#mobile_header img {
+    width: 40px;
+    height:40px;
+}
+mobile_header span {
+    font-size: 40px;
+    padding-left: 10px;
+}
