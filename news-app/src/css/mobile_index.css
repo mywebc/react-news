@@ -4,17 +4,19 @@ html {
     font-size: 50px;
 }
 #mobile_header {
+    border-bottom: 1px solid #aaa!important;
     display: flex;
     flex: 1;
 }
 #mobile_heade header {
-    border-bottom: 1px solid #eee;
 }
-#mobile_header img {
+#mobile_header header img {
     width: 40px;
     height:40px;
 }
-mobile_header span {
-    font-size: 40px;
+#mobile_header header span {
+    font-size: 20px;
     padding-left: 10px;
+    color: #1890ff;
+    vertical-align: top;
 }
