@@ -5,7 +5,7 @@ import Button from 'antd';
 import PCIndex from './js/components/pc_index'
 import MobilePCIndex from './js/components/mobile_pc_index'
 import MediaQuery from 'react-responsive'
-import registerServiceWorker from './registerServiceWorker';
+// import registerServiceWorker from './registerServiceWorker';
 import './css/index.css'
 import './css/mobile_index.css'
 
@@ -25,4 +25,4 @@ export default class Root extends React.Component{
 }
 
 ReactDOM.render(<Root />, document.getElementById('root'));
-registerServiceWorker();
+// registerServiceWorker();
