@@ -1,7 +1,17 @@
 import React from "react";
 import Header from "antd/lib/calendar/Header";
 import { Row, Col, Button, Menu, Icon } from 'antd';
-
+import {
+	Menu,
+	Icon,
+	Tabs,
+	message,
+	Form,
+	Input,
+	Button,
+	CheckBox,
+	Modal
+} from 'antd';
 const SubMenu = Menu.SubMenu;
 const MenuItemGroup = Menu.ItemGroup;
 
