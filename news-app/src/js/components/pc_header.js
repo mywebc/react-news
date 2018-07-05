@@ -16,8 +16,16 @@ const SubMenu = Menu.SubMenu;
 const MenuItemGroup = Menu.ItemGroup;
 
 export default class PCHeader extends React.Component {
-    state = {
-        current: '1',
+    constructor() {
+        super();
+        this.state = {
+            current: '1',
+            userNickName: '',
+            userid: '',
+            hasLogined: false,
+            modalVisible: false,
+            action: 'login'         
+        }
     }
     // react组件里面并没有手动绑定this,以下写法是一种解决方案.
     handleClick = (e) => {
@@ -64,6 +72,15 @@ export default class PCHeader extends React.Component {
                                 <Icon type="mail" />雄起
                             </Menu.Item>
                         </Menu>
+                        {/* 登陆注册模拟框 */}
+                        <Modal 
+                            title="Basic Modal"
+                            visible={this.state.visible}
+                            onOk={this.handleOk}
+                            onCancel={this.handleCancel}
+                        >
+
+                        </Modal>
                     </Col>
                     <Col span={2}></Col>
                 </Row>
