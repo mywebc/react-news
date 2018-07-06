@@ -1,19 +1,20 @@
 import React from "react";
-import Header from "antd/lib/calendar/Header";
-import { Row, Col, Button, Menu, Icon } from 'antd';
+import { Link } from  'react-router-dom'
 import {
-	Menu,
-	Icon,
+    Row,
+    Col,
+    Button,
+    Menu,
 	Tabs,
-	message,
 	Form,
 	Input,
-	Button,
-	CheckBox,
-	Modal
+    Modal,
+    Icon
 } from 'antd';
-const SubMenu = Menu.SubMenu;
-const MenuItemGroup = Menu.ItemGroup;
+const FormItem = Form.Item;
+// const SubMenu = Menu.SubMenu;
+const TabPane = Tabs.TabPane;
+// const MenuItemGroup = Menu.ItemGroup;
 
 export default class PCHeader extends React.Component {
     constructor() {
@@ -32,8 +33,26 @@ export default class PCHeader extends React.Component {
         this.setState({
           current: e.key,
         });
-      }
+      };
+    //   控制模拟框
+      setModalVisible (val) {
+        this.setState({
+            modalVisible: val
+        })
+      };
+    //   模拟框中tab切换点击事件
+    callback (key) {
+        console.log(key)
+    };
+    // 退出登陆
+    loginOut () {
+        this.setState({userNickName: ''})
+        this.setState({userid: ''})
+        this.setState({hasLogined: false})
+    };
     render() {
+        // const { getFieldDecorator } = this.props.form;
+        const userShow = this.state.hasLogined
         return (
             <header>
                 <Row>
@@ -74,15 +93,52 @@ export default class PCHeader extends React.Component {
                         </Menu>
                         {/* 登陆注册模拟框 */}
                         <Modal 
-                            title="Basic Modal"
-                            visible={this.state.visible}
+                            title="欢迎登录/注册"
+                            visible={this.state.modalVisible}
                             onOk={this.handleOk}
-                            onCancel={this.handleCancel}
+                            onCancel={this.setModalVisible(false)}
                         >
-
+                            <Tabs defaultActiveKey="1" >
+                                <TabPane tab="登录" key="1">
+                                    <Form onSubmit={this.handleSubmit} className="login-in">
+                                        <FormItem>
+                                                <Input prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />} placeholder="Username" />
+                                        </FormItem>
+                                        <FormItem>
+                                                <Input prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />} placeholder="Username" />
+                                        </FormItem>
+                                    </Form>
+                                </TabPane>
+                                <TabPane tab="注册" key="2">
+                                    <Form onSubmit={this.handleSubmit} className="registe">
+                                        <FormItem>
+                                                <Input prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />} placeholder="Username" />
+                                        </FormItem>
+                                        <FormItem>
+                                                <Input prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />} placeholder="Username" />
+                                        </FormItem>
+                                        <FormItem>
+                                                <Input prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />} placeholder="Username" />
+                                        </FormItem>
+                                    </Form>
+                                </TabPane>
+                            </Tabs>
                         </Modal>
                     </Col>
-                    <Col span={2}></Col>
+                    <Col span={2}>
+                    {userShow} ? <Menu.Item> 
+                        <Button type="primary" htmlType="button">{this.state.userNickName}</Button>
+                        &nbsp;&nbsp;
+                        <Link target="_blank">
+                            <Button type="dashed" htmlType="button">个人中心</Button>
+                        </Link>
+                        &nbsp;&nbsp;
+                        <Button type="ghost" htmlType="button" onClick={this.loginOut.bind(this)}>退出</Button>
+                        </Menu.Item>
+                        : <Menu.Item>
+                            <Icon type="mail" />登录/注册
+                        </Menu.Item>
+                    </Col>
                 </Row>
             </header>
         )

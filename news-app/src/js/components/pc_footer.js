@@ -1,6 +1,5 @@
 import React from "react";
-import Header from "antd/lib/calendar/Header";
-import { Row, Col, Icon } from 'antd';
+import { Row, Col } from 'antd';
 
 export default class PCFooter extends React.Component {
     render() {
