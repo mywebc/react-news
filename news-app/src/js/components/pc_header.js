@@ -17,8 +17,8 @@ const TabPane = Tabs.TabPane;
 // const MenuItemGroup = Menu.ItemGroup;
 
 export default class PCHeader extends React.Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = {
             current: '1',
             userNickName: '',
@@ -27,6 +27,10 @@ export default class PCHeader extends React.Component {
             modalVisible: false,
             action: 'login'         
         }
+        this.handleClick =  this.handleClick.bind(this)
+        this.setModalVisible = this.setModalVisible(this)
+        this.callback = this.callback.bind(this)
+        this.loginOut = this.loginOut.bind(this)
     }
     // react组件里面并没有手动绑定this,以下写法是一种解决方案.
     handleClick = (e) => {
@@ -52,7 +56,7 @@ export default class PCHeader extends React.Component {
     };
     render() {
         // const { getFieldDecorator } = this.props.form;
-        const userShow = this.state.hasLogined
+        // const userShow = this.state.hasLogined
         return (
             <header>
                 <Row>
@@ -87,16 +91,16 @@ export default class PCHeader extends React.Component {
                             <Menu.Item key="6">
                                 <Icon type="mail" />安排
                             </Menu.Item>
-                            <Menu.Item key="7">
-                                <Icon type="mail" />雄起
+                            <Menu.Item key="7" onClick={()=>this.setModalVisible(true)}>
+                                <Icon type="mail" />登陆/注册
                             </Menu.Item>
                         </Menu>
                         {/* 登陆注册模拟框 */}
                         <Modal 
                             title="欢迎登录/注册"
                             visible={this.state.modalVisible}
-                            onOk={this.handleOk}
-                            onCancel={this.setModalVisible(false)}
+                            onOk={()=>this.setModalVisible(false)}
+                            onCancel={()=>this.setModalVisible(false)}
                         >
                             <Tabs defaultActiveKey="1" >
                                 <TabPane tab="登录" key="1">
@@ -110,7 +114,7 @@ export default class PCHeader extends React.Component {
                                     </Form>
                                 </TabPane>
                                 <TabPane tab="注册" key="2">
-                                    <Form onSubmit={this.handleSubmit} className="registe">
+                                    <Form onSubmit={this.handleSubmit} className="register">
                                         <FormItem>
                                                 <Input prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />} placeholder="Username" />
                                         </FormItem>
@@ -126,18 +130,6 @@ export default class PCHeader extends React.Component {
                         </Modal>
                     </Col>
                     <Col span={2}>
-                    {userShow} ? <Menu.Item> 
-                        <Button type="primary" htmlType="button">{this.state.userNickName}</Button>
-                        &nbsp;&nbsp;
-                        <Link target="_blank">
-                            <Button type="dashed" htmlType="button">个人中心</Button>
-                        </Link>
-                        &nbsp;&nbsp;
-                        <Button type="ghost" htmlType="button" onClick={this.loginOut.bind(this)}>退出</Button>
-                        </Menu.Item>
-                        : <Menu.Item>
-                            <Icon type="mail" />登录/注册
-                        </Menu.Item>
                     </Col>
                 </Row>
             </header>
