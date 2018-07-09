@@ -28,12 +28,15 @@ export default class PCHeader extends React.Component {
             action: 'login'         
         }
         this.handleClick =  this.handleClick.bind(this)
-        this.setModalVisible = this.setModalVisible(this)
+        this.setModalVisible = this.setModalVisible.bind(this)
         this.callback = this.callback.bind(this)
         this.loginOut = this.loginOut.bind(this)
     }
     // react组件里面并没有手动绑定this,以下写法是一种解决方案.
     handleClick = (e) => {
+        if(e.key === '7') {
+            this.setModalVisible(true)
+        }
         this.setState({
           current: e.key,
         });
@@ -91,7 +94,7 @@ export default class PCHeader extends React.Component {
                             <Menu.Item key="6">
                                 <Icon type="mail" />安排
                             </Menu.Item>
-                            <Menu.Item key="7" onClick={()=>this.setModalVisible(true)}>
+                            <Menu.Item key="7" >
                                 <Icon type="mail" />登陆/注册
                             </Menu.Item>
                         </Menu>
@@ -109,7 +112,7 @@ export default class PCHeader extends React.Component {
                                                 <Input prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />} placeholder="Username" />
                                         </FormItem>
                                         <FormItem>
-                                                <Input prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />} placeholder="Username" />
+                                                <Input prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />} placeholder="Password" />
                                         </FormItem>
                                     </Form>
                                 </TabPane>
@@ -119,10 +122,10 @@ export default class PCHeader extends React.Component {
                                                 <Input prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />} placeholder="Username" />
                                         </FormItem>
                                         <FormItem>
-                                                <Input prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />} placeholder="Username" />
+                                                <Input prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />} placeholder="Password" />
                                         </FormItem>
                                         <FormItem>
-                                                <Input prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />} placeholder="Username" />
+                                                <Input prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />} placeholder="RepeatPassword" />
                                         </FormItem>
                                     </Form>
                                 </TabPane>
