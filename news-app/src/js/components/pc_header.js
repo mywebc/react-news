@@ -3,7 +3,6 @@ import React from "react";
 import {
     Row,
     Col,
-    Button,
     Menu,
 	Tabs,
 	Form,
@@ -51,7 +50,7 @@ export default class PCHeader extends React.Component {
     callback (key) {
         console.log(key)
     };
-    // 退出登陆
+    // 退出登录
     loginOut () {
         this.setState({userNickName: ''})
         this.setState({userid: ''})
