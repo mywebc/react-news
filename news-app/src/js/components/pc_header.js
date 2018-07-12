@@ -16,8 +16,8 @@ const TabPane = Tabs.TabPane;
 // const MenuItemGroup = Menu.ItemGroup;
 
 export default class PCHeader extends React.Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = {
             current: '1',
             userNickName: '',
